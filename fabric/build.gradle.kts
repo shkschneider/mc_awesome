@@ -41,7 +41,7 @@ dependencies {
     "shadowCommon"(project(":common", "transformProductionFabric")) { isTransitive = false }
     
     // EMI (Fabric)
-    modImplementation("dev.emi:emi:0.6.6+1.18.2") { exclude(group = "net.fabricmc") }
+    modImplementation("dev.emi:emi-fabric:1.0.8+1.19.4") { exclude(group = "net.fabricmc") }
 }
 
 tasks {
