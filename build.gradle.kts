@@ -8,6 +8,8 @@ plugins {
     id("dev.architectury.loom") version "1.6-SNAPSHOT" apply false
     // https://github.com/architectury/architectury-plugin
     id("architectury-plugin") version "3.4-SNAPSHOT"
+    // Shadow plugin for fat JARs
+    id("com.github.johnrengelman.shadow") version "8.1.1" apply false
 }
 
 fun version(): String {
@@ -32,6 +34,7 @@ subprojects {
     apply(plugin = "dev.architectury.loom")
     apply(plugin = "org.jetbrains.kotlin.jvm")
     apply(plugin = "java-library")
+    apply(plugin = "com.github.johnrengelman.shadow")
 
     repositories {
         maven(url = "https://maven.architectury.dev") { name = "architectury" }
