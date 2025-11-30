@@ -7,9 +7,9 @@ import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.TitleScreen;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Text;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.fml.ModList;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
+import net.neoforged.fml.ModList;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Pseudo;
 import org.spongepowered.asm.mixin.injection.At;
@@ -32,7 +32,7 @@ public abstract class TitleScreenMixin extends Screen {
     public void render(MatrixStack matrices, int mouseX, int mouseY, float delta, CallbackInfo ci) {
         if (mods == 0) mods = ModList.get().size();
         DrawableHelper.drawStringWithShadow(matrices, textRenderer,
-                String.format("Minecraft/Forge %s + %d Mods!", Minecraft.INSTANCE.getVERSION(), mods),
+                String.format("Minecraft/NeoForge %s + %d Mods!", Minecraft.INSTANCE.getVERSION(), mods),
                 2, height - 10, AwesomeColors.INSTANCE.getWhite());
         super.render(matrices, mouseX, mouseY, delta);
         ci.cancel();

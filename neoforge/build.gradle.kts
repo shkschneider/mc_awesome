@@ -6,15 +6,11 @@ plugins {
 
 architectury {
     platformSetupLoomIde()
-    forge()
+    neoForge()
 }
 
 loom {
     silentMojangMappingsLicense()
-    
-    forge {
-        mixinConfig("awesome.mixins.json")
-    }
 }
 
 sourceSets.main {
@@ -28,22 +24,22 @@ configurations {
     create("shadowCommon")
     compileClasspath.get().extendsFrom(configurations["common"])
     runtimeClasspath.get().extendsFrom(configurations["common"])
-    getByName("developmentForge").extendsFrom(configurations["common"])
+    getByName("developmentNeoForge").extendsFrom(configurations["common"])
 }
 
 dependencies {
-    // Forge
-    forge("net.minecraftforge:forge:${property("forge")}")
+    // NeoForge
+    neoForge("net.neoforged:neoforge:${property("neoforge")}")
     
-    // Architectury API for Forge
-    modImplementation("dev.architectury:architectury-forge:${property("architectury_api")}")
+    // Architectury API for NeoForge
+    modImplementation("dev.architectury:architectury-neoforge:${property("architectury_api")}")
     
-    // Kotlin for Forge
-    implementation("thedarkcolour:kotlinforforge:4.1.0")
+    // Kotlin for Forge (works with NeoForge)
+    implementation("thedarkcolour:kotlinforforge-neoforge:5.6.0")
     
     // Common module
     "common"(project(":common", "namedElements")) { isTransitive = false }
-    "shadowCommon"(project(":common", "transformProductionForge")) { isTransitive = false }
+    "shadowCommon"(project(":common", "transformProductionNeoForge")) { isTransitive = false }
 }
 
 tasks {
@@ -52,7 +48,7 @@ tasks {
         inputs.property("mod_id", project.property("mod_id"))
         inputs.property("mod_name", project.property("mod_name"))
         
-        filesMatching("META-INF/mods.toml") {
+        filesMatching("META-INF/neoforge.mods.toml") {
             expand(mutableMapOf(
                 "version" to project.version,
                 "mod_id" to property("mod_id"),
@@ -71,7 +67,7 @@ tasks {
         injectAccessWidener.set(true)
         inputFile.set(shadowJar.get().archiveFile)
         dependsOn(shadowJar)
-        archiveClassifier.set("forge")
+        archiveClassifier.set("neoforge")
     }
 }
 

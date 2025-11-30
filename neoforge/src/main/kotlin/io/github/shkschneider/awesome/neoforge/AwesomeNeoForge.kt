@@ -1,14 +1,14 @@
-package io.github.shkschneider.awesome.forge
+package io.github.shkschneider.awesome.neoforge
 
 import io.github.shkschneider.awesome.AwesomeMod
-import net.minecraftforge.fml.common.Mod
+import net.neoforged.fml.common.Mod
 
 /**
- * Forge entrypoint for the Awesome mod.
+ * NeoForge entrypoint for the Awesome mod.
  * Delegates to the common initialization code.
  */
 @Mod(AwesomeMod.MOD_ID)
-class AwesomeForge {
+class AwesomeNeoForge {
 
     init {
         AwesomeMod.init()

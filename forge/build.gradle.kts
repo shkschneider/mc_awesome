@@ -39,7 +39,7 @@ dependencies {
     modImplementation("dev.architectury:architectury-forge:${property("architectury_api")}")
     
     // Kotlin for Forge
-    implementation("thedarkcolour:kotlinforforge:4.1.0")
+    implementation("thedarkcolour:kotlinforforge:5.6.0")
     
     // Common module
     "common"(project(":common", "namedElements")) { isTransitive = false }

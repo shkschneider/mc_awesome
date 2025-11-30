@@ -1,5 +1,5 @@
 modLoader="kotlinforforge"
-loaderVersion="[4,)"
+loaderVersion="[5,)"
 license="MIT"
 issueTrackerURL="https://github.com/shkschneider/mc_awesome/issues"
 
@@ -19,27 +19,27 @@ Includes crystals, experience management, extras, commands, enchantments, and mo
 [[dependencies.awesome]]
 modId="forge"
 mandatory=true
-versionRange="[45,)"
+versionRange="[50,)"
 ordering="NONE"
 side="BOTH"
 
 [[dependencies.awesome]]
 modId="minecraft"
 mandatory=true
-versionRange="[1.19.4,1.20)"
+versionRange="[1.20.6,1.21)"
 ordering="NONE"
 side="BOTH"
 
 [[dependencies.awesome]]
 modId="kotlinforforge"
 mandatory=true
-versionRange="[4.1.0,)"
+versionRange="[5.6.0,)"
 ordering="NONE"
 side="BOTH"
 
 [[dependencies.awesome]]
 modId="architectury"
 mandatory=true
-versionRange="[8,)"
+versionRange="[12,)"
 ordering="NONE"
 side="BOTH"
