@@ -1,8 +1,8 @@
 package io.github.shkschneider.awesome.mixins;
 
 import io.github.shkschneider.awesome.Awesome;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraft.SharedConstants;
 import net.minecraft.client.resource.SplashTextResourceSupplier;
 import org.spongepowered.asm.mixin.Mixin;
@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
  * Link: https://linkie.shedaniel.me/mappings
  */
 @Pseudo
-@Environment(EnvType.CLIENT)
+@OnlyIn(Dist.CLIENT)
 @Mixin(SplashTextResourceSupplier.class)
 public class MainMenuTextMixin {
 

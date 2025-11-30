@@ -1,7 +1,7 @@
 package io.github.shkschneider.awesome.mixins;
 
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraft.client.MinecraftClient;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Pseudo;
@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
  * Source: https://github.com/rdvdev2/DisableCustomWorldsAdvice
  */
 @Pseudo
-@Environment(EnvType.CLIENT)
+@OnlyIn(Dist.CLIENT)
 @Mixin(MinecraftClient.class)
 public abstract class StableWorldsMixin {
 
