@@ -6,11 +6,15 @@ plugins {
 
 architectury {
     platformSetupLoomIde()
-    fabric()
+    forge()
 }
 
 loom {
     silentMojangMappingsLicense()
+    
+    forge {
+        mixinConfig("awesome.mixins.json")
+    }
 }
 
 sourceSets.main {
@@ -24,30 +28,31 @@ configurations {
     create("shadowCommon")
     compileClasspath.get().extendsFrom(configurations["common"])
     runtimeClasspath.get().extendsFrom(configurations["common"])
-    getByName("developmentFabric").extendsFrom(configurations["common"])
+    getByName("developmentForge").extendsFrom(configurations["common"])
 }
 
 dependencies {
-    // Fabric
-    modImplementation("net.fabricmc:fabric-loader:${property("fabric_loader")}")
-    modImplementation("net.fabricmc.fabric-api:fabric-api:${property("fabric_api")}")
-    modImplementation("net.fabricmc:fabric-language-kotlin:${property("fabric_kotlin")}")
+    // Forge
+    forge("net.minecraftforge:forge:${property("forge")}")
     
-    // Architectury API for Fabric
-    modImplementation("dev.architectury:architectury-fabric:${property("architectury_api")}")
+    // Architectury API for Forge
+    modImplementation("dev.architectury:architectury-forge:${property("architectury_api")}")
+    
+    // Kotlin for Forge
+    implementation("thedarkcolour:kotlinforforge:4.1.0")
     
     // Common module
     "common"(project(":common", "namedElements")) { isTransitive = false }
-    "shadowCommon"(project(":common", "transformProductionFabric")) { isTransitive = false }
-    
-    // EMI (Fabric)
-    modImplementation("dev.emi:emi-fabric:1.1.12+1.20.6") { exclude(group = "net.fabricmc") }
+    "shadowCommon"(project(":common", "transformProductionForge")) { isTransitive = false }
 }
 
 tasks {
     processResources {
         inputs.property("version", project.version)
-        filesMatching("fabric.mod.json") {
+        inputs.property("mod_id", project.property("mod_id"))
+        inputs.property("mod_name", project.property("mod_name"))
+        
+        filesMatching("META-INF/mods.toml") {
             expand(mutableMapOf(
                 "version" to project.version,
                 "mod_id" to property("mod_id"),
@@ -66,7 +71,7 @@ tasks {
         injectAccessWidener.set(true)
         inputFile.set(shadowJar.get().archiveFile)
         dependsOn(shadowJar)
-        archiveClassifier.set("fabric")
+        archiveClassifier.set("forge")
     }
 }
 

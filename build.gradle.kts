@@ -3,9 +3,9 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     // https://github.com/JetBrains/kotlin/releases
-    kotlin("jvm") version "1.8.10" apply false
+    kotlin("jvm") version "1.9.24" apply false
     // https://github.com/architectury/architectury-loom
-    id("dev.architectury.loom") version "1.0-SNAPSHOT" apply false
+    id("dev.architectury.loom") version "1.6-SNAPSHOT" apply false
     // https://github.com/architectury/architectury-plugin
     id("architectury-plugin") version "3.4-SNAPSHOT"
 }
@@ -35,9 +35,11 @@ subprojects {
     repositories {
         maven(url = "https://maven.architectury.dev") { name = "architectury" }
         maven(url = "https://maven.minecraftforge.net") { name = "forge" }
+        maven(url = "https://maven.neoforged.net/releases") { name = "neoforge" }
         maven(url = "https://api.modrinth.com/maven") { name = "modrinth" }
         maven(url = "https://cursemaven.com") { name = "curseforge" }
         maven(url = "https://maven.terraformersmc.com") { name = "terraformers" }
+        maven(url = "https://thedarkcolour.github.io/KotlinForForge") { name = "kotlinforforge" }
         mavenCentral()
     }
 
@@ -48,17 +50,17 @@ subprojects {
 
     tasks {
         withType<JavaCompile> {
-            options.release.set(17)
+            options.release.set(21)
             options.encoding = "UTF-8"
         }
         withType<KotlinCompile> {
-            kotlinOptions.jvmTarget = "17"
+            kotlinOptions.jvmTarget = "21"
         }
     }
 
     java {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
         withSourcesJar()
     }
 }
