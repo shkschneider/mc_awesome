@@ -34,7 +34,7 @@ dependencies {
     // Architectury API for NeoForge
     modImplementation("dev.architectury:architectury-neoforge:${property("architectury_api")}")
     
-    // Kotlin for Forge (works with NeoForge)
+    // Kotlin for NeoForge
     implementation("thedarkcolour:kotlinforforge-neoforge:5.6.0")
     
     // Common module

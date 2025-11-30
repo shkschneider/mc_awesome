@@ -19,7 +19,7 @@ Includes crystals, experience management, extras, commands, enchantments, and mo
 [[dependencies.awesome]]
 modId="neoforge"
 type="required"
-versionRange="[20.6,)"
+versionRange="[20.6,21)"
 ordering="NONE"
 side="BOTH"
 
