@@ -67,15 +67,15 @@ tasks {
         }
     }
     
+    shadowJar {
+        archiveClassifier.set("dev-shadow")
+        configurations = listOf(project.configurations["shadowCommon"])
+    }
+    
     remapJar {
         injectAccessWidener.set(true)
         inputFile.set(shadowJar.get().archiveFile)
         dependsOn(shadowJar)
         archiveClassifier.set("forge")
     }
-}
-
-val shadowJar = tasks.register<com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar>("shadowJar") {
-    archiveClassifier.set("dev-shadow")
-    configurations = listOf(project.configurations["shadowCommon"])
 }
