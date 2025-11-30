@@ -1,14 +1,17 @@
 package io.github.shkschneider.awesome
 
-import net.fabricmc.api.ModInitializer
-
 /**
- * Unified Awesome mod - combines all modules into a single mod.
+ * Common Awesome mod initialization - combines all modules into a single mod.
  * Includes: Core, Crystals, Experience, Extras, Commands, Enchantments, Pack
+ * 
+ * This is called by platform-specific entrypoints (Fabric/Forge)
  */
-class AwesomeMod : ModInitializer {
+object AwesomeMod {
 
-    override fun onInitialize() {
+    const val MOD_ID = "awesome"
+    const val MOD_NAME = "Awesome"
+
+    fun init() {
         // Core (base functionality, config, utilities)
         AwesomeCore()
         
