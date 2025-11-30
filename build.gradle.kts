@@ -22,16 +22,28 @@ version = version()
 repositories {
     maven(url = "https://api.modrinth.com/maven") { name = "modrinth" }
     maven(url = "https://cursemaven.com") { name = "curseforge" }
+    maven(url = "https://maven.terraformersmc.com") { name = "terraformers" }
 }
 
 configurations.all {
     resolutionStrategy.cacheChangingModulesFor(0, TimeUnit.SECONDS)
 }
 
-dependencies {
-    subprojects.forEach { subproject ->
-        implementation(project(path = ":${subproject.name}", configuration = "namedElements"))
+sourceSets.main {
+    java {
+        setSrcDirs(listOf("src/main/java", "src/main/kotlin"))
     }
+}
+
+dependencies {
+    minecraft("com.mojang:minecraft:${property("minecraft")}")
+    mappings("net.fabricmc:yarn:${property("yarn")}:v2")
+    modImplementation("net.fabricmc:fabric-loader:${property("fabric_loader")}")
+    modImplementation("net.fabricmc:fabric-language-kotlin:${property("fabric_kotlin")}")
+    modImplementation("net.fabricmc.fabric-api:fabric-api:${property("fabric_api")}")
+    // https://maven.terraformersmc.com/dev/emi/emi
+    modImplementation("dev.emi:emi:0.6.6+1.18.2") { exclude(group = "net.fabricmc") }
+    // Runtime only mods for testing
     listOf(
         // projectId to fileId
         "appleskin-248787" to "3927566", // https://www.curseforge.com/minecraft/mc-mods/appleskin/files
@@ -46,60 +58,21 @@ dependencies {
     }
 }
 
-allprojects {
-    apply(plugin = "org.jetbrains.kotlin.jvm")
-    apply(plugin = "fabric-loom")
-    group = rootProject.group
-    version = rootProject.version
-    sourceSets.main {
-        java {
-            setSrcDirs(listOf("src/main/java", "src/main/kotlin"))
+tasks {
+    processResources {
+        inputs.property("version", project.version)
+        filesMatching("fabric.mod.json") {
+            expand(mutableMapOf("version" to project.version))
         }
     }
-    dependencies {
-        minecraft("com.mojang:minecraft:${property("minecraft")}")
-        mappings("net.fabricmc:yarn:${property("yarn")}:v2")
-        modImplementation("net.fabricmc:fabric-loader:${property("fabric_loader")}")
-        modImplementation("net.fabricmc:fabric-language-kotlin:${property("fabric_kotlin")}")
-        modImplementation("net.fabricmc.fabric-api:fabric-api:${property("fabric_api")}")
+    jar {
+        from("LICENSE")
     }
-    tasks {
-        processResources {
-            inputs.property("version", rootProject.version)
-            filesMatching("fabric.mod.json") {
-                expand(mutableMapOf("version" to rootProject.version))
-            }
-        }
-        build {
-            doLast {
-                if (project.name == rootProject.name) {
-                    delete("${rootProject.buildDir}/libs/${rootProject.name}-${rootProject.version}.jar")
-                } else {
-                    val oldJar = "${project.name}-${rootProject.version}.jar"
-                    if (File("${project.buildDir}/libs/$oldJar").exists()) {
-                        val newJar = "${rootProject.name}-${project.name}-${rootProject.version}.jar"
-                        copy {
-                            from("${project.buildDir}/libs/")
-                            include(oldJar)
-                            into("${rootProject.buildDir}/libs/")
-                            rename(oldJar, newJar)
-                        }
-                        println("Output: $newJar")
-                    } else {
-                        throw IllegalStateException("${project.name}/libs/$oldJar not found!")
-                    }
-                }
-            }
-        }
-        jar {
-            from("LICENSE")
-        }
-        withType<JavaCompile> {
-            options.release.set(JavaVersion.VERSION_17.toString().toInt())
-            options.encoding = "UTF-8"
-        }
-        withType<KotlinCompile> {
-            kotlinOptions.jvmTarget = JavaVersion.VERSION_17.toString()
-        }
+    withType<JavaCompile> {
+        options.release.set(JavaVersion.VERSION_17.toString().toInt())
+        options.encoding = "UTF-8"
+    }
+    withType<KotlinCompile> {
+        kotlinOptions.jvmTarget = JavaVersion.VERSION_17.toString()
     }
 }

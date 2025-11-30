@@ -1,13 +1,8 @@
 rootProject.name = "Awesome"
 
-println()
-println("> Modules")
-rootDir.listFiles { dir, _ -> dir.isDirectory }
-    .filter { file -> File("$file/build.gradle.kts").exists() }
-    .forEach { module ->
-        println(":${module.name}")
-        include(":${module.name}")
-    }
+// Unified mod - all modules merged into single project
+// Machines module can be optionally included if needed
+// include(":machines")
 
 pluginManagement {
     repositories {

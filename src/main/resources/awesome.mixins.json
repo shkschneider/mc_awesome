@@ -1,0 +1,39 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "io.github.shkschneider.awesome.mixins",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "EntityDataMixin",
+    "IBrewingRecipesMixin",
+    "ICraftingInventoryMixin",
+    "ElevatorCooldownMixin",
+    "ElevatorJumpMixin",
+    "ElevatorSneakMixin",
+    "PvpMixin",
+    "SpongeMixin",
+    "KeepXpMixin",
+    "BackUponDeathMixin",
+    "ItemStackIsDamageableMixin",
+    "PlayerSneakMixin",
+    "BowItemUseMixin",
+    "PlayerRecipesMixin",
+    "TotemOfUndyingMixin",
+    "VillagersFollowEmeraldBlockMixin",
+    "VillagersInfiniteTradingMixin"
+  ],
+  "server": [],
+  "client": [
+    "OfflineDeveloper",
+    "DeathScreenMixin",
+    "TrashScreenMixin",
+    "TrashScreenHandlerMixin",
+    "LevelLoadingScreenMixin",
+    "MainMenuTextMixin",
+    "StableWorldsMixin",
+    "TitleScreenMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
