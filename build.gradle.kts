@@ -31,6 +31,7 @@ allprojects {
 subprojects {
     apply(plugin = "dev.architectury.loom")
     apply(plugin = "org.jetbrains.kotlin.jvm")
+    apply(plugin = "java-library")
 
     repositories {
         maven(url = "https://maven.architectury.dev") { name = "architectury" }
@@ -58,7 +59,7 @@ subprojects {
         }
     }
 
-    java {
+    extensions.configure<JavaPluginExtension> {
         sourceCompatibility = JavaVersion.VERSION_21
         targetCompatibility = JavaVersion.VERSION_21
         withSourcesJar()
