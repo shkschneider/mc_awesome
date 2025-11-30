@@ -1,0 +1,36 @@
+name: neoforge
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: gradlew
+        uses: gradle/wrapper-validation-action@v2
+      - name: jdk
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: 21
+      - name: gradle build neoforge
+        uses: gradle/gradle-build-action@v3
+        with:
+          arguments: :neoforge:build --stacktrace
+      - name: verify neoforge jar
+        run: |
+          if ls neoforge/build/libs/*-neoforge.jar 1> /dev/null 2>&1; then
+            echo "✅ NeoForge JAR found"
+            ls -la neoforge/build/libs/*-neoforge.jar
+          else
+            echo "❌ NeoForge JAR not found"
+            exit 1
+          fi
+      - name: release
+        uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: neoforge/build/libs/*-neoforge.jar
