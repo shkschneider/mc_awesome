@@ -5,10 +5,10 @@ import io.github.shkschneider.awesome.Awesome;
 import io.github.shkschneider.awesome.core.AwesomeUtils;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ingame.AbstractInventoryScreen;
 import net.minecraft.client.gui.screen.ingame.InventoryScreen;
 import net.minecraft.client.gui.screen.recipebook.RecipeBookProvider;
-import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.screen.PlayerScreenHandler;
 import net.minecraft.text.Text;
@@ -26,10 +26,10 @@ public abstract class TrashScreenMixin extends AbstractInventoryScreen<PlayerScr
     }
 
     @Inject(method = "drawBackground", at = @At(value = "TAIL"))
-    private void drawBackground(MatrixStack matrices, float delta, int mouseX, int mouseY, CallbackInfo ci) {
+    private void drawBackground(DrawContext context, float delta, int mouseX, int mouseY, CallbackInfo ci) {
         if (Awesome.INSTANCE.getCONFIG().getExtras().getTrashSlot()) {
             RenderSystem.setShaderTexture(0, AwesomeUtils.INSTANCE.identifier("textures/gui/trashslot.png"));
-            drawTexture(matrices, x + 152 - 1, y + 66 - 1, 152, 65, 1 + 16 + 1, 1 + 16 + 1);
+            context.drawTexture(AwesomeUtils.INSTANCE.identifier("textures/gui/trashslot.png"), x + 152 - 1, y + 66 - 1, 0, 0, 1 + 16 + 1, 1 + 16 + 1);
         }
     }
 

@@ -28,7 +28,6 @@ import net.minecraft.particle.DustParticleEffect
 import net.minecraft.server.world.ServerWorld
 import net.minecraft.state.StateManager
 import net.minecraft.text.Text
-import net.minecraft.text.TranslatableText
 import net.minecraft.util.ActionResult
 import net.minecraft.util.Formatting
 import net.minecraft.util.Hand
@@ -36,9 +35,9 @@ import net.minecraft.util.hit.BlockHitResult
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Direction
 import net.minecraft.util.math.Vec3d
+import net.minecraft.util.math.random.Random
 import net.minecraft.world.BlockView
 import net.minecraft.world.World
-import java.util.Random
 
 class ObeliskBlock : AwesomeBlockWithEntity<ObeliskBlockEntity>(
     AwesomeUtils.identifier("obelisk"), FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque() // 1.19 noBlockBreakParticles()
@@ -54,7 +53,7 @@ class ObeliskBlock : AwesomeBlockWithEntity<ObeliskBlockEntity>(
         super.getPlacementState(ctx).with(Obelisk.LEVELS, 0)
 
     override fun appendTooltip(stack: ItemStack, world: BlockView?, tooltip: MutableList<Text>, options: TooltipContext) {
-        tooltip.add(TranslatableText(AwesomeUtils.translatable("block", id.path, "hint")).formatted(Formatting.GRAY))
+        tooltip.add(Text.translatable(AwesomeUtils.translatable("block", id.path, "hint")).formatted(Formatting.GRAY))
     }
 
     override fun canPathfindThrough(state: BlockState, world: BlockView, pos: BlockPos, type: NavigationType): Boolean = false

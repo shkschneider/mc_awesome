@@ -5,7 +5,7 @@ plugins {
     // https://github.com/JetBrains/kotlin/releases
     kotlin("jvm") version "1.8.10"
     // https://maven.fabricmc.net/fabric-loom/fabric-loom.gradle.plugin/
-    id("fabric-loom") version "1.0.17"
+    id("fabric-loom") version "1.2-SNAPSHOT"
 }
 
 fun version(): String {
@@ -42,17 +42,15 @@ dependencies {
     modImplementation("net.fabricmc:fabric-language-kotlin:${property("fabric_kotlin")}")
     modImplementation("net.fabricmc.fabric-api:fabric-api:${property("fabric_api")}")
     // https://maven.terraformersmc.com/dev/emi/emi
-    modImplementation("dev.emi:emi:0.6.6+1.18.2") { exclude(group = "net.fabricmc") }
+    modImplementation("dev.emi:emi-fabric:1.0.5+1.19.4") { exclude(group = "net.fabricmc") }
     // Runtime only mods for testing
     listOf(
-        // projectId to fileId
-        "appleskin-248787" to "3927566", // https://www.curseforge.com/minecraft/mc-mods/appleskin/files
-        "cloth-config-348521" to "3972425", // https://www.curseforge.com/minecraft/mc-mods/cloth-config/files
-        "emi-580555" to "4406948", // https://www.curseforge.com/minecraft/mc-mods/emi/files
-        "fat-experience-orbs-334873" to "3823226", // https://www.curseforge.com/minecraft/mc-mods/fat-experience-orbs/files
-        "jade-324717" to "4160646", // https://www.curseforge.com/minecraft/mc-mods/jade/files
-        "lazydfu-433518" to "3209972", // https://www.curseforge.com/minecraft/mc-mods/modmenu/files
-        "xaeros-minimap-263420" to "4381120", // https://www.curseforge.com/minecraft/mc-mods/xaeros-minimap/files
+        // projectId to fileId - Updated for 1.19.4
+        "appleskin-248787" to "4465516", // https://www.curseforge.com/minecraft/mc-mods/appleskin/files
+        "cloth-config-348521" to "4468193", // https://www.curseforge.com/minecraft/mc-mods/cloth-config/files
+        "emi-580555" to "4489556", // https://www.curseforge.com/minecraft/mc-mods/emi/files
+        "jade-324717" to "4465654", // https://www.curseforge.com/minecraft/mc-mods/jade/files
+        "xaeros-minimap-263420" to "4495098", // https://www.curseforge.com/minecraft/mc-mods/xaeros-minimap/files
     ).forEach { mod ->
         modRuntimeOnly("curse.maven:${mod.first}:${mod.second}") { exclude(group = "net.fabricmc") }
     }

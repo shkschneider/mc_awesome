@@ -23,7 +23,7 @@ public abstract class BackUponDeathMixin {
     private void copyFrom(ServerPlayerEntity oldPlayer, boolean alive, CallbackInfo ci) {
         if (Awesome.INSTANCE.getCONFIG().getCommands().getBackUponDeath()) {
             @SuppressWarnings("DataFlowIssue") ServerPlayerEntity newPlayer = (ServerPlayerEntity) (Object) this;
-            final Location location = new Location(oldPlayer.world.getRegistryKey(), oldPlayer.getX(), oldPlayer.getY(), oldPlayer.getZ(), oldPlayer.getYaw(), oldPlayer.getPitch());
+            final Location location = new Location(oldPlayer.getWorld().getRegistryKey(), oldPlayer.getX(), oldPlayer.getY(), oldPlayer.getZ(), oldPlayer.getYaw(), oldPlayer.getPitch());
             AwesomeLogger.INSTANCE.debug("Saving death location: " + location);
             Location.Companion.writeLocation(((IEntityData) newPlayer).getData(), location, "back");
         }

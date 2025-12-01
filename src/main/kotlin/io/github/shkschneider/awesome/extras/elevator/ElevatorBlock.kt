@@ -9,7 +9,6 @@ import net.minecraft.client.item.TooltipContext
 import net.minecraft.entity.Entity
 import net.minecraft.item.ItemStack
 import net.minecraft.text.Text
-import net.minecraft.text.TranslatableText
 import net.minecraft.util.Formatting
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.BlockView
@@ -20,7 +19,7 @@ class ElevatorBlock : AwesomeBlock(
 ) {
 
     override fun appendTooltip(stack: ItemStack, world: BlockView?, tooltip: MutableList<Text>, options: TooltipContext) {
-        tooltip.add(TranslatableText(AwesomeUtils.translatable("block", id.path, "hint")).formatted(Formatting.GRAY))
+        tooltip.add(Text.translatable(AwesomeUtils.translatable("block", id.path, "hint")).formatted(Formatting.GRAY))
     }
 
     override fun onSteppedOn(world: World, pos: BlockPos, state: BlockState, entity: Entity) {

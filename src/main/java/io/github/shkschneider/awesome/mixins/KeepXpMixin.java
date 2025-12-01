@@ -13,7 +13,7 @@ public abstract class KeepXpMixin {
 
     @Inject(method = "copyFrom", at = @At("TAIL"))
     private void copyFrom(ServerPlayerEntity oldPlayer, boolean alive, CallbackInfo ci) {
-        if (!oldPlayer.world.getGameRules().getBoolean(GameRules.KEEP_INVENTORY) && oldPlayer.world.getGameRules().getBoolean(KeepXpGameRule.INSTANCE.getKey())) {
+        if (!oldPlayer.getWorld().getGameRules().getBoolean(GameRules.KEEP_INVENTORY) && oldPlayer.getWorld().getGameRules().getBoolean(KeepXpGameRule.INSTANCE.getKey())) {
             @SuppressWarnings("DataFlowIssue") ServerPlayerEntity newPlayer = (ServerPlayerEntity) (Object) this;
             KeepXpGameRule.INSTANCE.invoke(oldPlayer, newPlayer);
         }

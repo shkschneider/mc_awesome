@@ -14,13 +14,12 @@ import net.minecraft.item.ItemStack
 import net.minecraft.server.world.ServerWorld
 import net.minecraft.state.property.Properties
 import net.minecraft.text.Text
-import net.minecraft.text.TranslatableText
 import net.minecraft.util.Formatting
 import net.minecraft.util.Identifier
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Direction
+import net.minecraft.util.math.random.Random
 import net.minecraft.world.BlockView
-import java.util.Random
 
 class AwesomeBuddingBlock(
     protected val id: Identifier,
@@ -36,7 +35,7 @@ class AwesomeBuddingBlock(
     }
 
     override fun appendTooltip(stack: ItemStack, world: BlockView?, tooltip: MutableList<Text>, options: TooltipContext) {
-        tooltip.add(TranslatableText(AwesomeUtils.translatable("block", id.path, "hint")).formatted(Formatting.GRAY))
+        tooltip.add(Text.translatable(AwesomeUtils.translatable("block", id.path, "hint")).formatted(Formatting.GRAY))
     }
 
     override fun randomTick(state: BlockState, world: ServerWorld, blockPos: BlockPos, random: Random) {

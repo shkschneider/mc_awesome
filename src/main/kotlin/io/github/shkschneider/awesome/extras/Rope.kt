@@ -22,7 +22,6 @@ import net.minecraft.item.ItemStack
 import net.minecraft.loot.context.LootContext
 import net.minecraft.sound.BlockSoundGroup
 import net.minecraft.text.Text
-import net.minecraft.text.TranslatableText
 import net.minecraft.util.ActionResult
 import net.minecraft.util.Formatting
 import net.minecraft.util.Hand
@@ -50,13 +49,13 @@ class Rope : AwesomeBlock(
     }
 
     override fun appendTooltip(stack: ItemStack, world: BlockView?, tooltip: MutableList<Text>, context: TooltipContext) {
-        tooltip.add(TranslatableText(AwesomeUtils.translatable("block", id.path, "hint")).formatted(Formatting.GRAY))
+        tooltip.add(Text.translatable(AwesomeUtils.translatable("block", id.path, "hint")).formatted(Formatting.GRAY))
     }
 
     override fun getOutlineShape(state: BlockState, world: BlockView, pos: BlockPos, context: ShapeContext): VoxelShape =
         CaveVines.SHAPE
 
-    override fun isTranslucent(state: BlockState, world: BlockView, pos: BlockPos): Boolean = true
+    override fun isTransparent(state: BlockState, world: BlockView, pos: BlockPos): Boolean = true
 
     override fun canPlaceAt(state: BlockState, world: WorldView, pos: BlockPos): Boolean =
         (world.getBlockState(pos.up()).isSideSolidFullSquare(world, pos, Direction.DOWN) && world.getBlockState(pos).isAir)

@@ -2,10 +2,10 @@ package io.github.shkschneider.awesome.mixins;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.WorldGenerationProgressTracker;
 import net.minecraft.client.gui.screen.LevelLoadingScreen;
 import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Text;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -29,7 +29,7 @@ public class LevelLoadingScreenMixin extends Screen {
     }
 
     @Inject(method = "drawChunkMap", at = @At("HEAD"), cancellable = true)
-    private static void drawChunkMap(MatrixStack matrices, WorldGenerationProgressTracker progressProvider, int centerX, int centerY, int pixelSize, int pixelMargin, CallbackInfo ci) {
+    private static void drawChunkMap(DrawContext context, WorldGenerationProgressTracker progressProvider, int centerX, int centerY, int pixelSize, int pixelMargin, CallbackInfo ci) {
         ci.cancel();
     }
 

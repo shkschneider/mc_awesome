@@ -18,16 +18,15 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 @Mixin(MinecraftClient.class)
 public abstract class StableWorldsMixin {
 
-    // boolean bl2 = saveProperties.getLifecycle() != Lifecycle.stable();
+    // In 1.19.4, the method signature has changed
     @ModifyVariable(
-        method = "startIntegratedServer(Ljava/lang/String;Ljava/util/function/Function;Ljava/util/function/Function;ZLnet/minecraft/client/MinecraftClient$WorldLoadAction;)V",
-        at = @At(value = "FIELD", target = "Lnet/minecraft/client/MinecraftClient$WorldLoadAction;NONE:Lnet/minecraft/client/MinecraftClient$WorldLoadAction;", ordinal = 0),
-        ordinal = 2,
-        index = 11,
-        name = "bl2",
-        require = 1
+        method = "startIntegratedServer",
+        at = @At(value = "STORE"),
+        ordinal = 0,
+        name = "bl",
+        require = 0
     )
-    private boolean startIntegratedServer_getLifecycle(boolean bl2) {
+    private boolean startIntegratedServer_getLifecycle(boolean bl) {
         return false;
     }
 

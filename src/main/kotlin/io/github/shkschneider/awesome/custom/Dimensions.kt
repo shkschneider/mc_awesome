@@ -5,7 +5,6 @@ import io.github.shkschneider.awesome.core.AwesomeUtils
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientChunkEvents
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents
 import net.minecraft.client.MinecraftClient
-import net.minecraft.text.LiteralText
 import net.minecraft.text.Text
 import net.minecraft.text.Texts
 import net.minecraft.util.Formatting
@@ -38,10 +37,10 @@ object Dimensions {
                                 AwesomeChat.overlay(
                                     player, Texts.join(
                                         listOf(
-                                            LiteralText(
+                                            Text.literal(
                                                 "${current.namespace}:".lowercase().replaceFirstChar { it.uppercaseChar() })
                                                 .formatted(Formatting.ITALIC).formatted(Formatting.WHITE),
-                                            LiteralText(current.path.uppercase()).formatted(Formatting.BOLD)
+                                            Text.literal(current.path.uppercase()).formatted(Formatting.BOLD)
                                                 .formatted(Formatting.YELLOW),
                                         ), Text.of(" ")
                                     )

@@ -16,9 +16,7 @@ import net.minecraft.item.BlockItem
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NbtElement
 import net.minecraft.screen.ScreenHandler
-import net.minecraft.text.LiteralText
 import net.minecraft.text.Text
-import net.minecraft.text.TranslatableText
 import net.minecraft.util.Formatting
 import net.minecraft.util.collection.DefaultedList
 import net.minecraft.util.math.BlockPos
@@ -48,11 +46,11 @@ class CrateBlock(
                 val inventory = DefaultedList.ofSize(crate.size.total, ItemStack.EMPTY).apply {
                     Inventories.readNbt(nbt, this)
                 }
-                tooltip.add(LiteralText("${inventory.sumOf { it.count }} items").formatted(Formatting.GRAY))
+                tooltip.add(Text.literal("${inventory.sumOf { it.count }} items").formatted(Formatting.GRAY))
             }
         }
         if (tooltip.size == n) {
-            tooltip.add(TranslatableText(AwesomeUtils.translatable("block", id.path, "hint")).formatted(Formatting.GRAY))
+            tooltip.add(Text.translatable(AwesomeUtils.translatable("block", id.path, "hint")).formatted(Formatting.GRAY))
         }
     }
 
@@ -70,7 +68,7 @@ class CrateBlock(
     ), AwesomeBlockEntity.WithScreen {
 
         override fun getDisplayName(): Text =
-            TranslatableText(AwesomeUtils.translatable("block", crate.id.path))
+            Text.translatable(AwesomeUtils.translatable("block", crate.id.path))
 
         override fun createMenu(syncId: Int, playerInventory: PlayerInventory, player: PlayerEntity): ScreenHandler =
             CrateScreen.Handler(crate, syncId, playerInventory, this)

@@ -9,7 +9,6 @@ import net.minecraft.item.ItemGroup
 import net.minecraft.item.ItemStack
 import net.minecraft.item.ItemUsageContext
 import net.minecraft.text.Text
-import net.minecraft.text.TranslatableText
 import net.minecraft.util.ActionResult
 import net.minecraft.util.Formatting
 import net.minecraft.util.Hand
@@ -37,7 +36,7 @@ abstract class AwesomeItem(
             if (AwesomeInputs.shift()) {
                 tooltip.add(text)
             } else {
-                tooltip.add(TranslatableText(AwesomeUtils.translatable("item", id.path, "hint")).formatted(Formatting.GRAY))
+                tooltip.add(Text.translatable(AwesomeUtils.translatable("item", id.path, "hint")).formatted(Formatting.GRAY))
             }
         }
     }
