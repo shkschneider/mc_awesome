@@ -29,7 +29,7 @@ configurations {
 
 dependencies {
     // NeoForge
-    neoForge("net.neoforged:neoforge:${property("neoforge")}")
+    "neoForge"("net.neoforged:neoforge:${property("neoforge")}")
     
     // Architectury API for NeoForge
     modImplementation("dev.architectury:architectury-neoforge:${property("architectury_api")}")
