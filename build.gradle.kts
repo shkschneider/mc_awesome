@@ -1,5 +1,5 @@
 import org.apache.commons.io.output.ByteArrayOutputStream
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     // https://github.com/JetBrains/kotlin/releases
@@ -70,7 +70,10 @@ tasks {
         options.release.set(JavaVersion.VERSION_17.toString().toInt())
         options.encoding = "UTF-8"
     }
-    withType<KotlinCompile> {
-        kotlinOptions.jvmTarget = JavaVersion.VERSION_17.toString()
+}
+
+kotlin {
+    compilerOptions {
+        jvmTarget = JvmTarget.JVM_17
     }
 }
