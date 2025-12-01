@@ -5,7 +5,7 @@ plugins {
     // https://github.com/JetBrains/kotlin/releases
     kotlin("jvm") version "1.9.24" apply false
     // https://github.com/architectury/architectury-loom
-    id("dev.architectury.loom") version "1.13-SNAPSHOT" apply false
+    id("dev.architectury.loom") version "1.7-SNAPSHOT" apply false
     // https://github.com/architectury/architectury-plugin
     id("architectury-plugin") version "3.4-SNAPSHOT"
     // Shadow plugin for fat JARs (now maintained by GradleUp)
