@@ -33,7 +33,7 @@ configurations {
 
 dependencies {
     // Forge
-    forge("net.minecraftforge:forge:${property("forge")}")
+    "forge"("net.minecraftforge:forge:${property("forge")}")
     
     // Architectury API for Forge
     modImplementation("dev.architectury:architectury-forge:${property("architectury_api")}")
