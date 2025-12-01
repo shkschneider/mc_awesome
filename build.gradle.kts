@@ -4,8 +4,8 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     // https://github.com/JetBrains/kotlin/releases
     kotlin("jvm") version "1.9.24" apply false
-    // https://github.com/architectury/architectury-loom
-    id("dev.architectury.loom") version "1.7-SNAPSHOT" apply false
+    // https://github.com/FabricMC/fabric-loom
+    id("fabric-loom") version "1.7.4" apply false
     // https://github.com/architectury/architectury-plugin
     id("architectury-plugin") version "3.4-SNAPSHOT"
     // Shadow plugin for fat JARs (now maintained by GradleUp)
@@ -31,7 +31,7 @@ allprojects {
 }
 
 subprojects {
-    apply(plugin = "dev.architectury.loom")
+    apply(plugin = "fabric-loom")
     apply(plugin = "org.jetbrains.kotlin.jvm")
     apply(plugin = "java-library")
     apply(plugin = "com.gradleup.shadow")
