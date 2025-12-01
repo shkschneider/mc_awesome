@@ -5,7 +5,7 @@ plugins {
     // https://github.com/JetBrains/kotlin/releases
     kotlin("jvm") version "1.8.10"
     // https://maven.fabricmc.net/fabric-loom/fabric-loom.gradle.plugin/
-    id("fabric-loom") version "1.2-SNAPSHOT"
+    id("fabric-loom") version "1.1.10"
 }
 
 fun version(): String {
