@@ -6,21 +6,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - name: gradlew
-        uses: gradle/wrapper-validation-action@v1
+        uses: gradle/wrapper-validation-action@v2
       - name: jdk
-        uses: actions/setup-java@v1
+        uses: actions/setup-java@v4
         with:
           java-version: 17
+          distribution: temurin
       - name: gradle build
-        uses: gradle/gradle-build-action@v2
+        uses: gradle/gradle-build-action@v3
         with:
           arguments: clean build --stacktrace
       - name: release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/tags/')
         with:
           files: build/libs/*[0-9].jar
