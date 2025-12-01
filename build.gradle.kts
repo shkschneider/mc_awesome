@@ -38,7 +38,6 @@ subprojects {
 
     repositories {
         maven(url = "https://maven.architectury.dev") { name = "architectury" }
-        maven(url = "https://maven.minecraftforge.net") { name = "forge" }
         maven(url = "https://maven.neoforged.net/releases") { name = "neoforge" }
         maven(url = "https://api.modrinth.com/maven") { name = "modrinth" }
         maven(url = "https://cursemaven.com") { name = "curseforge" }
