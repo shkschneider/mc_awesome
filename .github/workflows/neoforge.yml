@@ -1,4 +1,4 @@
-name: neoforge
+name: NeoForge
 on: push
 
 jobs:
