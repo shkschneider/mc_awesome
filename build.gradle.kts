@@ -3,7 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     // https://github.com/JetBrains/kotlin/releases
-    kotlin("jvm") version "1.8.10"
+    kotlin("jvm") version "2.1.21"
     // https://maven.fabricmc.net/fabric-loom/fabric-loom.gradle.plugin/
     id("fabric-loom") version "1.1.10"
 }
