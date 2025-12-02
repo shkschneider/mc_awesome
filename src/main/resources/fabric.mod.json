@@ -20,7 +20,7 @@
         "adapter": "kotlin",
         "value": "io.github.shkschneider.awesome.AwesomeMod"
       }
-    ],
+    ]
   },
   "mixins": [
     "awesome.mixins.json"
