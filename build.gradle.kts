@@ -22,7 +22,6 @@ version = version()
 repositories {
     maven(url = "https://api.modrinth.com/maven") { name = "modrinth" }
     maven(url = "https://cursemaven.com") { name = "curseforge" }
-    maven(url = "https://maven.terraformersmc.com") { name = "terraformers" }
 }
 
 configurations.all {
@@ -41,8 +40,6 @@ dependencies {
     modImplementation("net.fabricmc:fabric-loader:${property("fabric_loader")}")
     modImplementation("net.fabricmc:fabric-language-kotlin:${property("fabric_kotlin")}")
     modImplementation("net.fabricmc.fabric-api:fabric-api:${property("fabric_api")}")
-    // https://maven.terraformersmc.com/dev/emi/emi
-    modImplementation("dev.emi:emi-fabric:1.0.5+1.19.4") { exclude(group = "net.fabricmc") }
     // Runtime only mods for testing
     listOf(
         // projectId to fileId

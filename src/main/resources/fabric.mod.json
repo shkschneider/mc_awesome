@@ -21,9 +21,6 @@
         "value": "io.github.shkschneider.awesome.AwesomeMod"
       }
     ],
-    "emi": [
-      "io.github.shkschneider.awesome.crystals.AwesomeEmiPlugin"
-    ]
   },
   "mixins": [
     "awesome.mixins.json"
