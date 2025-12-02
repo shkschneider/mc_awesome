@@ -45,12 +45,12 @@ dependencies {
     modImplementation("dev.emi:emi-fabric:1.0.5+1.19.4") { exclude(group = "net.fabricmc") }
     // Runtime only mods for testing
     listOf(
-        // projectId to fileId - Updated for 1.19.4
-        "appleskin-248787" to "4465516", // https://www.curseforge.com/minecraft/mc-mods/appleskin/files
-        "cloth-config-348521" to "4468193", // https://www.curseforge.com/minecraft/mc-mods/cloth-config/files
-        "emi-580555" to "4489556", // https://www.curseforge.com/minecraft/mc-mods/emi/files
-        "jade-324717" to "4465654", // https://www.curseforge.com/minecraft/mc-mods/jade/files
-        "xaeros-minimap-263420" to "4495098", // https://www.curseforge.com/minecraft/mc-mods/xaeros-minimap/files
+        // projectId to fileId
+        "appleskin-248787" to "4770823", // https://www.curseforge.com/minecraft/mc-mods/appleskin/files
+        "cloth-config-348521" to "5729099", // https://www.curseforge.com/minecraft/mc-mods/cloth-config/files
+        "emi-580555" to "6420948", // https://www.curseforge.com/minecraft/mc-mods/emi/files
+        "jade-324717" to "4649113", // https://www.curseforge.com/minecraft/mc-mods/jade/files
+        "xaeros-minimap-263420" to "6778026", // https://www.curseforge.com/minecraft/mc-mods/xaeros-minimap/files
     ).forEach { mod ->
         modRuntimeOnly("curse.maven:${mod.first}:${mod.second}") { exclude(group = "net.fabricmc") }
     }
